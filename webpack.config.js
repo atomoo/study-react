@@ -8,19 +8,14 @@ var HtmlwebpackPlugin = require('html-webpack-plugin');
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'output');
+var TEMPLATE_PATH = path.resolve(ROOT_PATH, 'app/template');
 var node_modules = path.resolve(__dirname, 'node_modules');
-var pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
-var pathToReactDOM = path.resolve(node_modules, 'react-dom/dist/react-dom.min.js');
 // webpack-configs
 var webpackConfig = {
     entry: {
-        app: path.resolve(APP_PATH, 'index.jsx')
+        app: path.resolve(APP_PATH, 'components')
     },
-    resolve: { 
-        alias: {
-            'react': pathToReact,
-            'react-dom': pathToReactDOM
-        },
+    resolve: {
         extensions: ['', '.js', '.jsx']
     },
     output: {
@@ -40,19 +35,16 @@ var webpackConfig = {
         loaders: [
             {
                 test: /\.jsx?$/,
-                loaders: ['babel'],
+                loader: 'babel',
                 include: APP_PATH
             }
         ]
     },
     plugins: [
         new HtmlwebpackPlugin({
-            title: 'My first react app'
+            template: TEMPLATE_PATH + '/index.html',
+            inject: 'body'
         })
-        // new webpack.ProvidePlugin({
-        //     React: 'react',
-        //     ReactDom: 'react-dom'
-        // })
     ]
 };
 module.exports = webpackConfig;

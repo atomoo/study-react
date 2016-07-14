@@ -3,7 +3,7 @@ var ReactDOM = require('react-dom');
 var Header = React.createClass({
     render: function () {
         return(
-            <h1>React H1</h1>
+            <h1>首页</h1>
         );
     }
 });
