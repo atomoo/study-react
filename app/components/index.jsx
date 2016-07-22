@@ -14,42 +14,58 @@ class Header extends React.Component{
 
     handleClick() {
         let layerOnOk = function() {
-            alert('click ok')
+            alert('click ok111')
         };
         this.setState({
                 layerOptions: {
-                    layerContent: (<span>弹层</span>),
-                    okText: '确认',
+                    layerContent: (
+                        <div>
+                            <div className="layer-body">
+                                <span>弹层</span>
+                            </div>
+                            <div className="layer-btn">
+                                <button className="sure">确认</button>
+                            </div>
+                        </div>),
                     layerOnOk: layerOnOk
                 },
                 layerShow: true
             });
     }
-
     handleClick2() {
+        let that = this;
         let layerOnOk = function() {
-            alert('click ok!')
+            alert('click ok222');
+            that.setState({
+                layerShow: false
+            });
         };
         this.setState({
             layerOptions: {
-                layerContent: (<span>弹层2</span>),
-                okText: '确认2',
+                layerContent: (
+                    <div>
+                        <div className="layer-body">
+                            <span>弹层2</span>
+                        </div>
+                        <div className="layer-btn">
+                            <button className="sure">确认2</button>
+                        </div>
+                    </div>),
                 layerOnOk: layerOnOk
             },
             layerShow: true
         });
     }
+    componentDidMount() {
+    }
+
     render() {
-        let layerEl = '';
-        if(this.state.layerShow) {
-            layerEl = <Layer content={this.state.layerOptions.layerContent} onOk={this.state.layerOptions.layerOnOk} okText={this.state.layerOptions.okText} />;
-        }
         return (
             <div>
-                <h1>首页asdf</h1>
+                <h1>23423</h1>
                 <button onClick={this.handleClick}>layer1</button>
                 <button onClick={this.handleClick2}>layer2</button>
-                {layerEl}
+                {this.state.layer}
             </div>
         );
     }

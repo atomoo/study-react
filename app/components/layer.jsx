@@ -9,16 +9,31 @@ class Layer extends React.Component {
     constructor(props) {
         super(props);
     }
+    componentDidMount() {
+        console.log(document.querySelectorAll('.sure'));
+        console.log(this.props.onOk);
+        let onOk = this.props.onOk;
+        document.querySelectorAll('.sure').forEach(function(el) {
+            el.addEventListener('click', function(e) {
+                onOk();
+            });
+        });
 
+    }
+    componentDidUpdate() {
+        console.log(document.querySelectorAll('.sure'));
+        console.log(this.props.onOk);
+        let onOk = this.props.onOk;
+        document.querySelectorAll('.sure').forEach(function(el) {
+            el.addEventListener('click', function(e) {
+                onOk();
+            });
+        });
+    }
     render() {
         return (
-            <div>
-                <div>
-                    {this.props.content}
-                </div>
-                <div className='btn-group'>
-                    <button onClick={this.props.onOk}>{this.props.okText}</button>
-                </div>
+            <div className="layer">
+                {this.props.content}
             </div>
         )
     }

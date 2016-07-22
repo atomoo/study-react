@@ -7,7 +7,10 @@ import React from 'react';
 class SearchBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {
+            value: '',
+            htmlContent: '<strong>asdfsa</strong>'
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
     }
@@ -17,16 +20,18 @@ class SearchBox extends React.Component {
     }
 
     handleSearch() {
-        alert(this.state.value)
+        console.log(this);
+        alert(this.state.value);
     }
 
     render() {
         let value = this.state.value;
         return (
           <div>
-              <input type="text" value={value} onChange={this.handleChange} placeholder="input something"/>
+              <input {...this.props} type="text" value={value} data-max={this.props.maxLoops} onChange={this.handleChange} placeholder="input something"/>
+              {/* 注释注释 */}
               <button onClick={this.handleSearch}>click</button>
-              <span>{value}</span>
+              <span dangerouslySetInnerHTML={{__html: this.state.htmlContent}}></span>
           </div>
         );
     }
