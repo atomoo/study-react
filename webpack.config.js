@@ -1,50 +1,51 @@
 /**
- * Created by Atom on 2016/4/27.
+ * @file webpack config
+ * @author atom
  */
-var path = require('path');
-var webpack = require('webpack');
-var HtmlwebpackPlugin = require('html-webpack-plugin');
-// some path
-var ROOT_PATH = path.resolve(__dirname);
-var APP_PATH = path.resolve(ROOT_PATH, 'app');
-var BUILD_PATH = path.resolve(ROOT_PATH, 'output');
-var TEMPLATE_PATH = path.resolve(ROOT_PATH, 'app/template');
-var node_modules = path.resolve(__dirname, 'node_modules');
-// webpack-configs
-var webpackConfig = {
-    entry: {
-        app: path.resolve(APP_PATH, 'components')
-    },
-    resolve: {
-        extensions: ['', '.js', '.jsx']
-    },
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+    entry: './src/index.tsx',
+    mode: 'development',
     output: {
-        path: BUILD_PATH,
-        filename: 'bundle.js'
-    },
-    //enable dev source map
-    // devtool: 'eval-source-map',
-    //enable dev server
-    devServer: {
-        historyApiFallback: true,
-        hot: true,
-        inline: true,
-        progress: true
+        publicPath: '/'
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.jsx?$/,
-                loader: 'babel',
-                include: APP_PATH
+                test: /\.tsx?$/,
+                loader: 'babel-loader',
+                options: {cacheDirectory: true},
+                exclude: /node_modules/
+            },
+            {
+                enforce: 'pre',
+                test: /\.js$/,
+                loader: 'source-map-loader'
             }
         ]
     },
+    resolve: {
+        alias: {
+            'react-dom': '@hot-loader/react-dom'
+        },
+        extensions: ['.ts', '.tsx', '.js']
+    },
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: './dist',
+        port: 8181,
+        hot: true,
+        historyApiFallback: true,
+        host: '0.0.0.0',
+        disableHostCheck: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
+    },
     plugins: [
-        new HtmlwebpackPlugin({
-            template: TEMPLATE_PATH + '/index.html',
-            inject: 'body'
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
         })
     ]
 };
-module.exports = webpackConfig;

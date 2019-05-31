@@ -1,34 +1,42 @@
 {
-  "name": "study-react",
+  "name": "my-app",
   "version": "1.0.0",
-  "description": "react",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --progress --profile --colors --hot --port 8282"
+    "start": "webpack-dev-server"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/atomoo/study-react.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/atomoo/study-react/issues"
+  "dependencies": {
+    "@babel/runtime": "^7.4.5",
+    "@hot-loader/react-dom": "^16.8.6",
+    "qs": "^6.7.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-hot-loader": "^4.8.8",
+    "react-router-dom": "^5.0.0",
+    "whatwg-fetch": "^3.0.0"
   },
-  "homepage": "https://github.com/atomoo/study-react#readme",
   "devDependencies": {
-    "babel-core": "^6.7.7",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-react-transform": "^2.0.2",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "html-webpack-plugin": "^2.16.0",
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1",
-    "react-transform-hmr": "^1.0.4",
-    "webpack": "1.12.13",
-    "webpack-dev-server": "^3.1.14"
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/qs": "^6.5.3",
+    "@types/react": "^16.8.18",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-router-dom": "^4.3.3",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^4.0.0-beta.3",
+    "source-map-loader": "^0.2.4",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
   }
 }
